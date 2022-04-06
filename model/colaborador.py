@@ -1,4 +1,4 @@
-from model.pessoa import Pessoa
+from pessoa import Pessoa
 
 
 class Colaborador(Pessoa):

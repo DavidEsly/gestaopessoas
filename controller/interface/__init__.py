@@ -1,5 +1,6 @@
-from model.fornecedor import Fornecedor
-from model.colaborador import Colaborador
+from fornecedor import Fornecedor
+from colaborador import Colaborador
+from dados import *
 
 
 def valida_string(msg):
@@ -187,3 +188,9 @@ def busca_fornecedor(msg):
         if cpf == f.cpf:
             pos = p
     return pos
+
+
+def salvar():
+    global colaborador
+
+    salvar_arquivo_colaborador(colaborador)
