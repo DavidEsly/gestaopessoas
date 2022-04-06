@@ -27,4 +27,4 @@ class Colaborador(Pessoa):
         return Colaborador._total
 
     def __str__(self):
-        return f'Nome:{self.nome} Função:{self.funcao} Matricula:{self.setor} Setor:{self.matricula}'
+        return f'Nome:{self.nome:<15} Função:{self.funcao:<10} Matricula:{self.setor:<10} Setor:{self.matricula:<8}'

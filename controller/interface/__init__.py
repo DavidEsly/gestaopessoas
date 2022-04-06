@@ -59,7 +59,7 @@ def valida_cpf(msg):
 def menu(msg, opcoes):
     while True:
         try:
-            print(msg)
+            print(msg.center(40))
             for p, op in enumerate(opcoes):
                 print(f'{p + 1} - {op}')
             escolha = valida_inteiro("Sua escolha: ")
@@ -74,6 +74,18 @@ def menu(msg, opcoes):
 colaborador = list()
 fornecedor = list()
 pessoas = list()
+
+
+def carrega_dados():
+    global colaborador, fornecedor
+    if checar_arquivo('colaborador.txt'):
+        lista = carregar_arquivo_colaborador('colaborador.txt')
+        for c in lista:
+            colaborador.append(Colaborador(c[0], c[1], c[2], c[3]))
+    if checar_arquivo('fornecedor.txt'):
+        lista = carregar_arquivo_fornecedor('fornecedor.txt')
+        for f in lista:
+            fornecedor.append(Fornecedor(f[0], f[1], f[2], f[3]))
 
 
 def adicionar_pessoa():
@@ -92,7 +104,7 @@ def adicionar_pessoa():
 
 
 def editar_pessoa():
-    op = listar_pessoa('Que tipo de pessoa você deseja alterar?')
+    op = listar_pessoa('Que tipo de cadastro você deseja alterar?')
     if op == 1:
         pos = busca_colaborador("Digite a matricula do colaborador que deseja alterar: ")
         alt_op = menu(f'O que você deseja alterar do colaborador {colaborador[pos].nome}: ',
@@ -192,5 +204,8 @@ def busca_fornecedor(msg):
 
 def salvar():
     global colaborador
-
-    salvar_arquivo_colaborador(colaborador)
+    global fornecedor
+    if len(colaborador) > 0:
+        salvar_arquivo_colaborador(colaborador)
+    if len(fornecedor) > 0:
+        salvar_arquivo_fornecedor(fornecedor)

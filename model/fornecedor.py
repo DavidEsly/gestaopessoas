@@ -23,4 +23,4 @@ class Fornecedor(Pessoa):
         return Fornecedor._total
 
     def __str__(self):
-        return f'Nome: {self.nome} Função: {self.funcao} CPF: {self.empresa} Empresa: {self.cpf}'
+        return f'Nome: {self.nome:<15} Função: {self.funcao:<10} CPF: {self.empresa:<10} Empresa: {self.cpf:<11}'

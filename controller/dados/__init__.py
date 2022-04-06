@@ -1,9 +1,31 @@
 def carregar_arquivo_colaborador(arquivo):
-    pass
+    try:
+        arq = open(arquivo, 'rt')
+    except FileNotFoundError:
+        print('\033[0;31mERRO: Arquivo informado não existe!')
+    else:
+        lista = list()
+        for c in arq:
+            funcionario = c.split(';')
+            funcionario[len(funcionario) - 1] = funcionario[len(funcionario) - 1].replace('\n', '')
+            lista.append(funcionario)
+        arq.close()
+        return lista
 
 
 def carregar_arquivo_fornecedor(arquivo):
-    pass
+    try:
+        arq = open(arquivo, 'rt')
+    except FileNotFoundError:
+        print('\033[0;31mERRO: Arquivo informado não existe!')
+    else:
+        lista = list()
+        for c in arq:
+            terceirizado = c.split(';')
+            terceirizado[len(terceirizado) - 1] = terceirizado[len(terceirizado) - 1].replace('\n', '')
+            lista.append(terceirizado)
+        arq.close()
+        return lista
 
 
 def checar_arquivo(arquivo):
@@ -11,7 +33,6 @@ def checar_arquivo(arquivo):
         arq = open(arquivo, 'rt')
         arq.close()
     except FileNotFoundError:
-        print('\033[0;31mERRO: Arquivo não existe!\033[m')
         return False
     else:
         return True
