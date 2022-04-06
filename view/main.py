@@ -1,4 +1,3 @@
 from controller.interface import *
 
-
-print(valida_string('Nome: '))
+menu('Sistema de gestão de pessoas', ['Teste', 'De', 'Lista'])
